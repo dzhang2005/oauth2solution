@@ -1,4 +1,4 @@
-package com.davidzhang.consulting.client.service;
+package com.davidzhang.consulting.client.service.impl;
 
 import com.davidzhang.consulting.client.entity.PasswordResetToken;
 import com.davidzhang.consulting.client.entity.User;
@@ -7,6 +7,7 @@ import com.davidzhang.consulting.client.model.UserModel;
 import com.davidzhang.consulting.client.repository.PasswordResetTokenRepository;
 import com.davidzhang.consulting.client.repository.UserRepository;
 import com.davidzhang.consulting.client.repository.VerificationTokenRepository;
+import com.davidzhang.consulting.client.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

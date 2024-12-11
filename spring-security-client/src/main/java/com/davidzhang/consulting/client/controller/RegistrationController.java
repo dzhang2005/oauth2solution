@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,15 +43,15 @@ public class RegistrationController {
         return "Bad User";
     }
     @GetMapping("/resendVerifyToken")
-    public String resendVerificationToken(@RequestParam("token") String oldToken, HttpServletRequest request) {
+    public String resendVerificationToken(@RequestParam("token") String oldToken, final HttpServletRequest request) {
         VerificationToken verificationToken = userService.generateNewVerificationToken(oldToken);
         User user = verificationToken.getUser();
         resendVerificationTokenMail(user, applicationUrl(request), verificationToken);
         return "Verification Link Sent";
     }
 
-    @PostMapping("resetPassword")
-    public String resetPassword(@RequestBody PasswordModel passwordModel, HttpServletRequest request) {
+    @PostMapping("/resetPassword")
+    public String resetPassword(@RequestBody PasswordModel passwordModel, final HttpServletRequest request) {
         User user = userService.findUserByEmail(passwordModel.getEmail());
         String url = "";
         if (user != null) {

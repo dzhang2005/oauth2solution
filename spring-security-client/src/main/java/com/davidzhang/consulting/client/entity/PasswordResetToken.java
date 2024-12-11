@@ -37,6 +37,7 @@ public class PasswordResetToken {
     nullable = false,
     foreignKey = @ForeignKey(name = "FK_USER_PASSWORD_TOKEN"))
     private User user;
+
     public PasswordResetToken(User user, String token) {
         super();
         this.token = token;
