@@ -1,5 +1,6 @@
 package com.davidzhang.consulting.client.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ForeignKey;
@@ -8,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +19,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name="verification_token")
 public class VerificationToken {
 
     //Expiration time 10 miutes
@@ -27,6 +30,7 @@ public class VerificationToken {
 
     private String token;
 
+    @Column(name="expiration_time")
     private Date expirationTime;
 
     @OneToOne(fetch = FetchType.EAGER)
